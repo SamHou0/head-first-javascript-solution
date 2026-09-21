@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planets</title>
+    <style>
+        .redText {
+            color: red;
+        }
+    </style>
     <script>
         function init() {
             let planet = document.getElementById("greenplanet");
             planet.innerHTML = "Red Alert: hit by phaser fire!";
+            planet.setAttribute("class", "redText");
         }
         window.onload = init;
     </script>
