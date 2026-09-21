@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phrase-o-matic</title>
+</head>
+
+<body>
+    <script>
+        function makePhrases() {
+            let words1 = ["24/7", "multi-tier", "30,000 foot"];
+            let words2 = ["empowered", "value-added", "oriented", "focused"];
+            let words3 = ["process", "solution"];
+
+            let rand1 = Math.floor(Math.random() * words1.length);
+            let rand2 = Math.floor(Math.random() * words2.length);
+            let rand3 = Math.floor(Math.random()*words3.length);
+
+            let phrase = words1[rand1]+" "+words2[rand2]+" "+words3[rand3];
+            alert(phrase);
+        }
+        makePhrases();
+    </script>
+</body>
+
+</html>
