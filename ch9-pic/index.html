@@ -9,18 +9,30 @@
         body {
             margin: 20px;
         }
-        img{
+
+        img {
             margin: 20px;
         }
     </style>
     <script>
         function init() {
-            let image = document.getElementById("zero");
-            image.onclick = showAnswer;
+            let images = document.getElementsByTagName("img");
+            for (let i = 0; i < images.length; i++) {
+                images[i].onmouseover = showAnswer;
+                images[i].onmouseout = reblur;
+            }
         }
-        function showAnswer() {
-            let image = document.getElementById("zero");
-            image.src = "zero.jpg"
+        function showAnswer(eventObj) {
+            let image = eventObj.target;
+            let name = image.id;
+            name += ".jpg";
+            image.src = name;
+        }
+        function reblur(eventObj) {
+            let image = eventObj.target;
+            let name = image.id;
+            name = name + "blur.jpg";
+            image.src = name;
         }
         window.onload = init;
     </script>

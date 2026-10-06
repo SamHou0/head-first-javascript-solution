@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Fly!</title>
+</head>
+
+<body>
+    <script>
+        let passengers = [
+            { name: "Jane Doloop", paid: true, ticket: "supercoach" },
+            { name: "Dr. Evel", paid: true, ticket: "firstclass" },
+            { name: "Sue Property", paid: false, ticket: "firstclass" },
+            { name: "John Funcall", paid: true, ticket: "coach" },
+        ]
+        function processPassengers(passengers, testFunction) {
+            for (let i = 0; i < passengers.length; i++) {
+                if (testFunction(passengers[i])) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        function checkNoFlyList(passenger) {
+            return (passenger.name === "Dr. Evel");
+        }
+        function checkNotPaid(passenger) {
+            return (!passenger.paid);
+        }
+        function serveCustomer(passenger) {
+            let getDrinkOrderFunction = createDrinkOrder(passenger);
+            let getDinnerOrderFunction = createDinnerOrder(passenger);
+            getDrinkOrderFunction();
+            getDinnerOrderFunction();
+            getDrinkOrderFunction();
+            getDrinkOrderFunction();
+            getDrinkOrderFunction();
+        }
+        function createDrinkOrder(passenger) {
+            let orderFunction;
+            if (passenger.ticket === "firstclass") {
+                orderFunction = function () {
+                    alert("Would you like a cocktail or wine?");
+                }
+            } else if (passenger.ticket === "supercoach") {
+                orderFunction = function () {
+                    alert("Would you like cola, water or wine?");
+                }
+            } else {
+                orderFunction = function () {
+                    alert("Your choice is cola or water.");
+                }
+            }
+            return orderFunction;
+        }
+        function createDinnerOrder(passenger) {
+            let dinnerOrderFunction;
+            if (passenger.ticket === "firstclass") {
+                dinnerOrderFunction = function () {
+                    alert("Would you like chicken or pasta?");
+                }
+            } else if (passenger.ticket === "supercoach") {
+                dinnerOrderFunction = function () {
+                    alert("Fastfood or cheese dishes?");
+                }
+            } else {
+                dinnerOrderFunction = function () {
+                    alert("Your choice is peanut cookie or salt cookies");
+                }
+            }
+            return dinnerOrderFunction;
+        }
+        function servePassengers(passengers) {
+            for (let i = 0; i < passengers.length; i++) {
+                serveCustomer(passengers[i]);
+            }
+        }
+        let allCanFly = processPassengers(passengers, checkNoFlyList);
+        let allPaid = processPassengers(passengers, checkNotPaid);
+        if (!allCanFly) {
+            console.log("The plane cannot take off: we have a passenger on the on-fly list");
+        }
+        if (!allPaid) {
+            console.log("The plan can't take off: not everyone has paid.");
+        }
+
+        servePassengers(passengers);
+    </script>
+</body>
+
+</html>
