@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars!</title>
+</head>
+
+<body>
+    <script>
+        function Car(params) {
+            this.make = params.make;
+            this.model = params.model;
+            this.year = params.year;
+            this.color = params.color;
+            this.passengers = params.passengers;
+            this.convertible = params.convertible;
+            this.mileage = params.mileage;
+            this.started = false;
+            this.start = function () {
+                this.started = true;
+            }
+            this.stop = function () {
+                this.started = false;
+            }
+            this.drive = function () {
+                if (this.started) {
+                    console.log(this.make + " " + this.model + " goes zoom zoom!");
+                } else {
+                    console.log("Start the engine first.");
+                }
+            }
+        }
+        let carParams = {
+            make: "Webville Motors", model: "Test car",
+            year: 2014, color: "marine", passengers: 2,
+            convertible: true, mileage: 21
+        };
+        let testCar = new Car(carParams);
+        let cars = [testCar];
+        for (let i = 0; i < cars.length; i++) {
+            cars[i].start();
+            cars[i].drive();
+            cars[i].drive();
+            cars[i].stop();
+        }
+    </script>
+</body>
+
+</html>
