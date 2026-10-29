@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Robots!</title>
+</head>
+
+<body>
+    <script>
+        function Game() {
+            this.level = 0;
+        }
+        Game.prototype.play = function () {
+            this.level++;
+            console.log("Welcome to level " + this.level);
+            this.unlock();
+        }
+        Game.prototype.unlock = function () {
+            if (this.level == 42) {
+                Robot.prototype.deployLaser = function () {
+                    console.log("Laser!");
+                }
+            }
+        }
+        function Robot(name, year, owner) {
+            this.name = name;
+            this.year = year;
+            this.owner = owner;
+        }
+        let game = new Game();
+        let robby = new Robot("Robby", 1956, "Dr. Morbius");
+        let rosie = new Robot("Rosie", 1962, "Gorge Jetson");
+
+        while (game.level < 42) {
+            game.play();
+        }
+        robby.deployLaser();
+        rosie.deployLaser();
+    </script>
+</body>
+
+</html>
